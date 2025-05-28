@@ -6,7 +6,7 @@ public abstract class Jogo {
   private String categoria;
   private Double preco;
 
-public Jogo (String nome, String codigo, String categoria, Double preco){
+public Jogos (String nome, String codigo, String categoria, Double preco){
   this.nome = nome;
   this.codigo = codigo;
   this.categoria = categoria;
