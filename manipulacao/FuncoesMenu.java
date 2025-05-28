@@ -17,8 +17,6 @@ public class FuncoesMenu {
         listaJogos.add(new JogoTabuleiro("Detetive", "006", 7.00));
         listaJogos.add(new JogoDado("Ludo", "007", 10.00));
         listaJogos.add(new JogoDado("American Dice", "008", 10.00));
-        listaJogos.add(new JogosAcao("Twister", "009", 16.00));
-        listaJogos.add(new JogosAcao("Jenga", "010", 16.00));
     }
 
    
