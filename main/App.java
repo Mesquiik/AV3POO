@@ -8,7 +8,7 @@ public class App{
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Jogos> jogos = new ArrayList <> ();
     
-    String resposta;
+int resposta = 0;
 
 int x = 1;
 while (x == 1){
@@ -22,7 +22,7 @@ x = 0;
     System.out.println("5. Alterar os dados de um jogo?");
     System.out.println("6. Sair do sistema?");
     System.out.print("Digite a opção desejada: ");
-    resposta = sc.nextLine();
+    resposta = sc.nextInt();
 
     switch (resposta) {
               case "1":
