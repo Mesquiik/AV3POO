@@ -1,6 +1,6 @@
 package main;
 import jogos.*;
-import manipulação;
+import manipulação.*;
 import pagamento.*;
 
 public class App{
