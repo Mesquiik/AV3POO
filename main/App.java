@@ -1,7 +1,7 @@
 package main;
 import jogos.*;
 import manipulação;
-import paramento.*;
+import pagamento.*;
 
 public class App{
   public static void main(String[] args) {
