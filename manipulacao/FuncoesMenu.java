@@ -85,7 +85,7 @@ public class FuncoesMenu {
     }
 
     
-    public static void menu() {
+    public void menuLoop() {
         Scanner scanner = new Scanner(System.in);
         int opcao;
 
