@@ -5,7 +5,7 @@ import java.util.*;
 
 public class FuncoesMenu {
 
-    private static List<Jogo> listaJogos = new ArrayList<>();
+    private static List<Jogos> listaJogos = new ArrayList<>();
 
    
     public static void cadastrarJogosIniciais() {
