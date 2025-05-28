@@ -71,6 +71,19 @@ public class FuncoesMenu {
         System.out.println("Jogo não encontrado pra remoção.");
     }
 
+
+    public static void removerJogo2(String codigo) { //ver se nao da erro
+    	for (Jogos jogo : listaJogos) {
+            if (jogo.getCodigo().equalsIgnoreCase(codigo)) {
+                int index = listaJogos.indexOf(jogo);
+                listaJogos.remove(index);
+                System.out.println("Jogo removido com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Jogo não encontrado para remoção.");
+    }
+
     
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
