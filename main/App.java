@@ -9,7 +9,9 @@ public class App{
 		ArrayList<Jogo> jogos = new ArrayList <> ();
     
     String resposta;
-    
+
+
+	  //COLOCAR TUDO DENTRO DE UM LOOP, SAIR SÓ SE O CABA QUISER
     System.out.println("----- MENU DA LUDERIA -----");
     System.out.println("Você deseja:");
     System.out.println("1. Ver todos os jogos cadastrados?");
