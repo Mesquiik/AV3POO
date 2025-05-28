@@ -1,6 +1,6 @@
 package jogos;
 
-public abstract class Jogo {
+public abstract class Jogos {
   private String nome;
   private String codigo;
   private String categoria;
@@ -14,17 +14,38 @@ public Jogos (String nome, String codigo, String categoria, Double preco){
 }
 
 public String getNome() {
-        return nome;
-    }
+	return nome;
+}
+
+public void setNome(String nome) {
+	this.nome = nome;
+}
+
 public String getCodigo() {
-        return codigo;
+	return codigo;
+}
+
+public void setCodigo(String codigo) {
+	this.codigo = codigo;
 }
 
 public String getCategoria() {
-        return categoria;
+	return categoria;
+}
+
+public void setCategoria(String categoria) {
+	this.categoria = categoria;
 }
 
 public Double getPreco() {
-        return preco;
+	return preco;
 }
+
+public void setPreco(Double preco) {
+	this.preco = preco;
+}
+
+
+
+
 }
