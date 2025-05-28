@@ -1,3 +1,6 @@
+// Criar pagar e cadastrar novo jogo 
+
+
 package manipulacao;
 
 import jogos.*;
