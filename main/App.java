@@ -2,16 +2,17 @@ package main;
 import jogos.*;
 import manipulacao.*;
 import pagamento.*;
+import java.util.*;
 
 public class App{
   public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		ArrayList<Jogos> jogos = new ArrayList <> ();
-	  
-    		cadastrarJogosIniciais();
-	  
-		menu();
-
+		
+		
+		FuncoesMenu menu = new FuncoesMenu();
+		
+		menu.cadastrarJogosIniciais();
+		
+		menu.menuLoop();
+    
   }
 }
-
