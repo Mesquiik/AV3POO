@@ -6,7 +6,7 @@ import pagamento.*;
 public class App{
   public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ArrayList<Jogo> jogos = new ArrayList <> ();
+		ArrayList<Jogos> jogos = new ArrayList <> ();
     
     String resposta;
 
@@ -21,7 +21,7 @@ public class App{
     System.out.println("5. Alterar os dados de um jogo?");
     System.out.println("6. Sair do sistema?");
     System.out.print("Digite a opção desejada: ");
-    resposta = scanner.nextLine();
+    resposta = sc.nextLine();
 
     switch (resposta) {
               case "1":
