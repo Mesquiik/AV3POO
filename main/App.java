@@ -1,6 +1,6 @@
 package main;
 import jogos.*;
-import manipulação.*;
+import manipulacao.*;
 import pagamento.*;
 
 public class App{
@@ -10,8 +10,9 @@ public class App{
     
     String resposta;
 
-
-	  //COLOCAR TUDO DENTRO DE UM LOOP, SAIR SÓ SE O CABA QUISER
+int x = 1;
+	  while (x == 1){
+		  x = 0;
     System.out.println("----- MENU DA LUDERIA -----");
     System.out.println("Você deseja:");
     System.out.println("1. Ver todos os jogos cadastrados?");
@@ -26,30 +27,37 @@ public class App{
     switch (resposta) {
               case "1":
                   // chamar função listarJogos();
+		    x = 1;
                    break;
         
               case "2":
                   // chamar função cadastrarJogo();
+		     x = 1;
                   break;
         
               case "3":
                   // chamar função removerJogo();
+		     x = 1;
                   break;
         
               case "4":
                  // chamar função listarJogosAlf();
+		     x = 1;
                   break;
         
               case "5":
                   // chamar função alterarJogo();
+		     x = 1;
                   break;
         
               case "6":
                   System.out.println("Encerrando o sistema. Até logo!");
+		     x = 0;
                   break;
         
               default:
                   System.out.println("Opção inválida.");
+			x = 1;
     }
   }
 }
