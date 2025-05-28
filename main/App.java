@@ -15,7 +15,7 @@ public class App{
     System.out.println("1. Ver todos os jogos cadastrados?");
     System.out.println("2. Cadastrar um novo jogo?");
     System.out.println("3. Remover algum jogo existente?");
-    System.out.println("4. Procurar um jogo pelo código?");
+    System.out.println("4. Ver todos os jogos em ordem alfabética?");
     System.out.println("5. Alterar os dados de um jogo?");
     System.out.println("6. Sair do sistema?");
     System.out.print("Digite a opção desejada: ");
@@ -35,7 +35,7 @@ public class App{
                   break;
         
               case "4":
-                 // chamar função buscarJogoPorCodigo();
+                 // chamar função listarJogosAlf();
                   break;
         
               case "5":
