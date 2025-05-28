@@ -3,12 +3,14 @@ packages jogos;
 public abstract class Jogo {
   private String nome;
   private string codigo;
-  private String categoria:
+  private String categoria;
+  private Double preco;
 
-public Jogo (Sring nome, String codigo, String categoria){
+public Jogo (Sring nome, String codigo, String categoria, Double preco){
   this.nome = nome;
   this.codigo = codigo;
   this.categoria = categoria;
+  this.preco = preco;
 }
 
 public String getNome() {
@@ -20,5 +22,9 @@ public String getCodigo() {
 
 public String getCategoria() {
         return categoria;
+}
+
+public Double getPreco() {
+        return preco;
 }
 }
