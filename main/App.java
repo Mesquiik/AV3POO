@@ -11,8 +11,8 @@ public class App{
     String resposta;
 
 int x = 1;
-	  while (x == 1){
-		  x = 0;
+while (x == 1){
+x = 0;
     System.out.println("----- MENU DA LUDERIA -----");
     System.out.println("Você deseja:");
     System.out.println("1. Ver todos os jogos cadastrados?");
@@ -58,6 +58,7 @@ int x = 1;
               default:
                   System.out.println("Opção inválida.");
 			x = 1;
+      }
     }
   }
 }
