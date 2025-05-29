@@ -102,42 +102,45 @@ public class FuncoesMenu {
             System.out.println("2 - Buscar jogo por código");
             System.out.println("3 - Listar jogos ordenados por nome");
             System.out.println("4 - Alterar jogo");
-            System.out.println("5 - Alterar jogo");
+            System.out.println("5 - Adicionar jogo");
             System.out.println("6 - Remover jogo");
-            System.out.println("7 -Alugar jogo");
+            System.out.println("7 -Alugar jogo"); // ainda incompleto
             System.out.println("8 - Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.println("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
 
             switch (opcao) {
                 case 1 -> listarJogos();
                 case 2 -> {
-                    System.out.print("Digite o código do jogo: ");
+                    System.out.println("Digite o código do jogo: ");
                     buscarPorCodigo(scanner.nextLine());
                 }
                 case 3 -> listarOrdenadoPorNome();
                 case 4 -> {
-                    System.out.print("Código do jogo para alterar: ");
+                    System.out.println("Código do jogo para alterar: ");
                     String codigo = scanner.nextLine();
-                    System.out.print("Novo nome: ");
+                    System.out.println("Novo nome: ");
                     String nome = scanner.nextLine();
-                    System.out.print("Novo preço: ");
+                    System.out.println("Novo preço: ");
                     double preco = scanner.nextDouble();
                     alterarJogo(codigo, nome, preco);
                 }
 
                 case 5 -> {
-                    System.out.print("Nome do novo jogo: ");
+                    System.out.println("Nome do novo jogo: ");
                     String nome = scanner.nextLine();
-                    System.out.print("Código do jogo a adicionar: ");
+                    System.out.println("Código do jogo a adicionar: ");
                     String codigo = scanner.nextLine();
                     Integer tipo = 0;
                     while (tipo != 1 && tipo != 2 && tipo != 3){
-                    System.out.print("Tipo do jogo (1- Carta, 2- Tabuleiro, 3- Dado: ");
-                    tipo = scanner.nextInt();  
+                    System.out.println("Tipo do jogo (1- Carta, 2- Tabuleiro, 3- Dado: ");
+                    tipo = scanner.nextInt();
+                    if (tipo != 1 && tipo != 2 && tipo != 3){
+                        System.out.println("Tipo incorreto, tente novamente.");
                     }
-                    System.out.print("Preço do novo jogo: ");
+                    }
+                    System.out.println("Preço do novo jogo: ");
                     double preco = scanner.nextDouble();
                     if (tipo == 1){
                         Jogo jogo = new JogoCarta(nome, codigo, preco);
@@ -149,15 +152,15 @@ public class FuncoesMenu {
                     adicionarJogo(jogo);
                 }
                 case 6 -> {
-                    System.out.print("Código do jogo para remover: ");
+                    System.out.println("Código do jogo para remover: ");
                     removerJogo(scanner.nextLine());
                 }
 
                 case 7 -> {
-                    System.out.print("Digite o código do jogo para alugar: ");
+                    System.out.println("Digite o código do jogo para alugar: ");
                     listarJogos();
                     String codigo = scanner.nextLine();
-                    System.out.print("Digite a quantidade de dias para alugar: ");
+                    System.out.println("Digite a quantidade de dias para alugar: ");
                     Integer dias = scanner.nextInt();
                     // chamar pagamento e afins
                 }
