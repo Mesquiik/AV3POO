@@ -87,7 +87,11 @@ public class FuncoesMenu {
         System.out.println("Jogo não encontrado para remoção.");
     }
 
-    
+    public static void adicionarJogo (Jogo jogo) {
+        listaJogos.add(jogo);
+        listarJogos();
+    }
+
     public void menuLoop() {
         Scanner scanner = new Scanner(System.in);
         int opcao;
@@ -119,6 +123,28 @@ public class FuncoesMenu {
                     System.out.print("Novo preço: ");
                     double preco = scanner.nextDouble();
                     alterarJogo(codigo, nome, preco);
+                }
+
+                case 4 -> {
+                    System.out.print("Nome do novo jogo: ");
+                    String nome = scanner.nextLine();
+                    System.out.print("Código do jogo a adicionar: ");
+                    String codigo = scanner.nextLine();
+                    Integer tipo = 0;
+                    while (tipo != 1 && tipo != 2 && tipo != 3){
+                    System.out.print("Tipo do jogo (1- Carta, 2- Tabuleiro, 3- Dado: ");
+                    tipo = scanner.nextInt();  
+                    }
+                    System.out.print("Preço do novo jogo: ");
+                    double preco = scanner.nextDouble();
+                    if (tipo == 1){
+                        Jogo jogo = new JogoCarta(nome, codigo, preco);
+                    } else if (tipo == 2){
+                        Jogo jogo = new JogoTabuleiro(nome, codigo, preco);
+                    } else {
+                        Jogo jogo = new JogoDado(nome, codigo, preco);
+                    }
+                    adicionarJogo(jogo);
                 }
                 case 5 -> {
                     System.out.print("Código do jogo para remover: ");
