@@ -1,7 +1,11 @@
 package jogos;
 
 public class JogoCarta extends Jogos{
-  public JogoCarta (String nome, String codigo, Double preco){
+	
+	private Integer numeroCartas;
+	
+  public JogoCarta (String nome, String codigo, Double preco, Integer numeroCartas){
     super(nome, codigo, "Carta", preco);
+    this.numeroCartas = numeroCartas;
   }
 }
