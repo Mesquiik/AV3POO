@@ -87,7 +87,7 @@ public class FuncoesMenu {
         System.out.println("Jogo não encontrado para remoção.");
     }
 
-    public static void adicionarJogo (Jogo jogo) {
+    public static void adicionarJogo (Jogos jogo) {
         listaJogos.add(jogo);
         listarJogos();
     }
@@ -142,12 +142,13 @@ public class FuncoesMenu {
                     }
                     System.out.println("Preço do novo jogo: ");
                     double preco = scanner.nextDouble();
+                    Jogos jogo;
                     if (tipo == 1){
-                        Jogo jogo = new JogoCarta(nome, codigo, preco);
+                        jogo = new JogoCarta(nome, codigo, preco);
                     } else if (tipo == 2){
-                        Jogo jogo = new JogoTabuleiro(nome, codigo, preco);
+                        jogo = new JogoTabuleiro(nome, codigo, preco);
                     } else {
-                        Jogo jogo = new JogoDado(nome, codigo, preco);
+                        jogo = new JogoDado(nome, codigo, preco);
                     }
                     adicionarJogo(jogo);
                 }
