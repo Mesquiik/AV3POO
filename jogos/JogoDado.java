@@ -8,4 +8,9 @@ public class JogoDado extends Jogos{
 	  super (nome, codigo, "Dado", preco);
 	  this.numeroDados = numeroDados;
   }
+  
+  @Override
+  public String toString() {
+	  return super.toString() + " Número de dados: " + numeroDados;
+  }
 }
