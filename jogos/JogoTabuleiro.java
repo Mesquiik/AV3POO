@@ -7,4 +7,9 @@ public class JogoTabuleiro extends Jogos {
     	super (nome, codigo, "Tabuleiro", preco);
     	this.numeroPecas = numeroPecas;
   }
+	
+	@Override
+	  public String toString() {
+		  return super.toString() + " Número de peças: " + numeroPecas;
+	  }
 }
