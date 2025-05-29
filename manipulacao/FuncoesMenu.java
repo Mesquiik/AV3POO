@@ -102,8 +102,10 @@ public class FuncoesMenu {
             System.out.println("2 - Buscar jogo por código");
             System.out.println("3 - Listar jogos ordenados por nome");
             System.out.println("4 - Alterar jogo");
-            System.out.println("5 - Remover jogo");
-            System.out.println("6 - Sair");
+            System.out.println("5 - Alterar jogo");
+            System.out.println("6 - Remover jogo");
+            System.out.println("7 -Alugar jogo");
+            System.out.println("8 - Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
@@ -125,7 +127,7 @@ public class FuncoesMenu {
                     alterarJogo(codigo, nome, preco);
                 }
 
-                case 4 -> {
+                case 5 -> {
                     System.out.print("Nome do novo jogo: ");
                     String nome = scanner.nextLine();
                     System.out.print("Código do jogo a adicionar: ");
@@ -146,11 +148,21 @@ public class FuncoesMenu {
                     }
                     adicionarJogo(jogo);
                 }
-                case 5 -> {
+                case 6 -> {
                     System.out.print("Código do jogo para remover: ");
                     removerJogo(scanner.nextLine());
                 }
-                case 6 -> System.out.println("Saindo.");
+
+                case 7 -> {
+                    System.out.print("Digite o código do jogo para alugar: ");
+                    listarJogos();
+                    String codigo = scanner.nextLine();
+                    System.out.print("Digite a quantidade de dias para alugar: ");
+                    Integer dias = scanner.nextInt();
+                    // chamar pagamento e afins
+                }
+                    
+                case 8 -> System.out.println("Saindo.");
                 default -> System.out.println("Opção inválida.");
             }
 
