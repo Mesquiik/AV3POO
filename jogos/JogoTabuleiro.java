@@ -1,7 +1,10 @@
 package jogos;
 
 public class JogoTabuleiro extends Jogos {
-  public JogoTabuleiro (String nome, String codigo, Double preco){
-    super (nome, codigo, "Tabuleiro", preco);
+	
+	private Integer numeroPecas;
+	public JogoTabuleiro (String nome, String codigo, Double preco, Integer numeroPecas){
+    	super (nome, codigo, "Tabuleiro", preco);
+    	this.numeroPecas = numeroPecas;
   }
 }
