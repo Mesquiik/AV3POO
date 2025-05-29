@@ -47,12 +47,7 @@ public void setPreco(Double preco) {
 
 @Override
 public String toString() {
-	return "Jogos [nome=" + nome + ", codigo=" + codigo + ", categoria=" + categoria + ", preco=" + preco + "]";
+	return "Nome: " + nome + ", Código: " + codigo + ", Categoria: " + categoria + ", Preço/dia: R$" + preco + ",";
 }
-
-
-
-
-
 
 }
