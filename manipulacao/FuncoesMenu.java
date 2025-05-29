@@ -11,7 +11,7 @@ public class FuncoesMenu {
     private static List<Jogos> listaJogos = new ArrayList<>();
 
    
-    public static void cadastrarJogosIniciais() {
+    public void cadastrarJogosIniciais() {
         listaJogos.add(new JogoCarta("Uno", "001", 5.00, 112));
         listaJogos.add(new JogoCarta("Buraco", "002", 5.00, 108));
         listaJogos.add(new JogoCarta("Blackjack", "003", 5.00, 52));
