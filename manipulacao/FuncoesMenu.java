@@ -12,14 +12,14 @@ public class FuncoesMenu {
 
    
     public static void cadastrarJogosIniciais() {
-        listaJogos.add(new JogoCarta("Uno", "001", 5.00));
-        listaJogos.add(new JogoCarta("Buraco", "002", 5.00));
-        listaJogos.add(new JogoCarta("Blackjack", "003", 5.00));
-        listaJogos.add(new JogoTabuleiro("Xadrez", "004", 7.00));
-        listaJogos.add(new JogoTabuleiro("War", "005", 7.00));
-        listaJogos.add(new JogoTabuleiro("Detetive", "006", 7.00));
-        listaJogos.add(new JogoDado("Ludo", "007", 10.00));
-        listaJogos.add(new JogoDado("American Dice", "008", 10.00));
+        listaJogos.add(new JogoCarta("Uno", "001", 5.00, 112));
+        listaJogos.add(new JogoCarta("Buraco", "002", 5.00, 108));
+        listaJogos.add(new JogoCarta("Blackjack", "003", 5.00, 52));
+        listaJogos.add(new JogoTabuleiro("Xadrez", "004", 7.00, 32));
+        listaJogos.add(new JogoTabuleiro("War", "005", 7.00, 78));
+        listaJogos.add(new JogoTabuleiro("Detetive", "006", 7.00, 48));
+        listaJogos.add(new JogoDado("Ludo", "007", 10.00, 2));
+        listaJogos.add(new JogoDado("American Dice", "008", 10.00, 5));
     }
 
    
@@ -49,10 +49,9 @@ public class FuncoesMenu {
     }
 
  
-    public static void alterarJogo(String codigo, String novoNome, double novoPreco) {
+    public static void alterarPreco(String codigo, double novoPreco) {
         for (Jogos jogo : listaJogos) {
             if (jogo.getCodigo().equalsIgnoreCase(codigo)) {
-                jogo.setNome(novoNome);
                 jogo.setPreco(novoPreco);
                 System.out.println("Jogo atualizado com sucesso.");
                 return;
@@ -101,7 +100,7 @@ public class FuncoesMenu {
             System.out.println("1 - Listar jogos");
             System.out.println("2 - Buscar jogo por código");
             System.out.println("3 - Listar jogos ordenados por nome");
-            System.out.println("4 - Alterar jogo");
+            System.out.println("4 - Alterar preço");
             System.out.println("5 - Adicionar jogo");
             System.out.println("6 - Remover jogo");
             System.out.println("7 -Alugar jogo"); // ainda incompleto
@@ -121,10 +120,9 @@ public class FuncoesMenu {
                     System.out.println("Código do jogo para alterar: ");
                     String codigo = scanner.nextLine();
                     System.out.println("Novo nome: ");
-                    String nome = scanner.nextLine();
-                    System.out.println("Novo preço: ");
+                    
                     double preco = scanner.nextDouble();
-                    alterarJogo(codigo, nome, preco);
+                    alterarPreco(codigo, preco);
                 }
 
                 case 5 -> {
@@ -141,14 +139,20 @@ public class FuncoesMenu {
                     }
                     }
                     System.out.println("Preço do novo jogo: ");
-                    double preco = scanner.nextDouble();
+                    Double preco = scanner.nextDouble();
                     Jogos jogo;
                     if (tipo == 1){
-                        jogo = new JogoCarta(nome, codigo, preco);
+                    	System.out.println("Quantas cartas têm o jogo?");
+                    	Integer cartas = scanner.nextInt();
+                        jogo = new JogoCarta(nome, codigo, preco, cartas);
                     } else if (tipo == 2){
-                        jogo = new JogoTabuleiro(nome, codigo, preco);
+                    	System.out.println("Quantas peças têm o jogo?");
+                    	Integer peças = scanner.nextInt();
+                        jogo = new JogoTabuleiro(nome, codigo, preco, peças);
                     } else {
-                        jogo = new JogoDado(nome, codigo, preco);
+                    	System.out.println("Quantos dados têm o jogo?");
+                    	Integer dados = scanner.nextInt();
+                        jogo = new JogoDado(nome, codigo, preco, dados);
                     }
                     adicionarJogo(jogo);
                 }
