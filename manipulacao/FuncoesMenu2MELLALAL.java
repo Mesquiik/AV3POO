@@ -158,15 +158,7 @@ public class FuncoesMenu {
                     removerJogo(scanner.nextLine());
                 }
 
-                case 7 -> {
-                    System.out.println("Digite o código do jogo para alugar: ");
-                    listarJogos();
-                    String codigo = scanner.nextLine();
-                    System.out.println("Digite a quantidade de dias para alugar: ");
-                    Integer dias = scanner.nextInt();
-                    // chamar pagamento e afins
-                }
-                    
+                            case 7 -> alugarJogos(scanner);     
                 case 8 -> System.out.println("Saindo.");
                 default -> System.out.println("Opção inválida.");
             }
@@ -175,4 +167,63 @@ public class FuncoesMenu {
 
         scanner.close();
     }
-}
+    public void alugarJogos(Scanner scanner) { 
+        List<Jogos> carrinho = new ArrayList<>();
+        Double total = 0;
+
+        while (true) { 
+            listarJogos();
+            System.out.println("Digite o código do jogo para adicionar ao carrinho (ou 'fim' para encerrar): ");
+            String codigo = scanner.nextLine();
+            if (codigo.equalsIgnoreCase("fim")) break;
+
+            Jogos jogo = buscarJogoPorCodigo(codigo);
+            if (jogo != null) { 
+                carrinho.add(jogo); 
+                total += jogo.getPreco();
+                System.out.println("Jogo adicionado: " + jogo.getNome());
+            } else { 
+                System.out.prinln("Código inválido.");
+            } 
+        }
+        if (carrinho.isEmpty()) { 
+            System.out.println("Nenhum jogo selecionado.");
+            int dias = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Escolha a loja (1 - Barra, 2 - Salvador): ");
+            int lojaEscolha = scanner.nextInt();
+            TaxaLoja taxaLoja = (lojaEscolha == 1) ? new TaxaBarra() : new TaxaSalvador();
+
+            Double valorBase = total * dias;
+            Double taxaLojaValor = taxaLoja.calculaTaxa();
+            Double valorTotalComTaxa = valorBase + taxaLojaValor;
+
+            Double restante = valorTotalComTaxa;
+            Double pago = 0;
+
+            while (restante > 0.01) { 
+                System.out.println("Restante: R$ " + String.format("%.2f", restante)); 
+                System.out.println("Escolha a forma de pagamento (1 - Cartão, 2 - Pix): ");
+                int forma = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.println("Quanto deseja pagar com essa forma?");
+                Double valorParcial = scanner.nextDouble();
+                scanner.nextLine();
+
+                TaxaPagamento taxa;
+                if (forma == 1) { 
+                    taxa = new TaxaCartao();
+                } else { 
+                    taxa = new TaxaPix();
+                } 
+                Double valorComTaxa = valorParcial + taxa.calculaTaxa(valorParcial);
+                pago += valorComTaxa;
+                restante = valorTotalComTaxa - pago;
+            } 
+            System.out.println("\n Pagamento realizado com sucesso!");
+            System.out.println("Total pago: R$ %.2f\n", pago);
+        }
+    }
+
