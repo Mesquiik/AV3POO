@@ -50,4 +50,5 @@ public String toString() {
 	return "Nome: " + nome + ", Código: " + codigo + ", Categoria: " + categoria + ", Preço/dia: R$" + preco + ",";
 }
 
+
 }
