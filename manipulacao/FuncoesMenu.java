@@ -212,12 +212,13 @@ public class FuncoesMenu {
 			Double valorBase = total * dias;
 			Double valorTotalComTaxa = valorBase + taxaLoja.calculaTaxa();
 
-			TaxaPagamento taxaCartao = new TaxaPix();
-			TaxaPagamento descontoPix = new TaxaCartao();
+			TaxaPagamento taxaCartao = new TaxaCartao();
+			TaxaPagamento descontoPix = new TaxaPix();
 
 			Double valorCartao = valorTotalComTaxa + taxaCartao.calculaTaxa(valorTotalComTaxa);
 			Double valorPix = valorTotalComTaxa + descontoPix.calculaTaxa(valorTotalComTaxa);
-
+			
+			System.out.println("Valor base -> R$ " + String.format("%.2f", valorTotalComTaxa));
 			System.out.println("1 - Cartão -> R$ " + String.format("%.2f", valorCartao));
 			System.out.println("2 - Pix -> R$ " + String.format("%.2f", valorPix));
 
