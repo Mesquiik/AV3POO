@@ -194,7 +194,7 @@ public class FuncoesMenu {
             if (jogo != null) { 
                 carrinho.add(jogo);
                 total += jogo.getPreco();
-                System.out.println("Jogo adicionado: " + jogo.getNome());
+                System.out.println("Jogo adicionado ao carrinho: " + jogo.getNome());
             } else { 
                 System.out.println("Código inválido.");
             } 
@@ -211,11 +211,9 @@ public class FuncoesMenu {
            
             scanner.nextLine();
 
-            System.out.println("Escolha a loja (1 - Barra, 2 - Salvador): ");
-            int lojaEscolha = scanner.nextInt();
+            ProcessarPagamento processar = new ProcessarPagamento();
+            TaxaLoja taxaLoja = processar.unidadeLoja();
             
-            TaxaLoja taxaLoja = (lojaEscolha == 1) ? new TaxaBarra() : new TaxaSalvador();
-
             Double valorBase = total * dias;
             Double valorTotalComTaxa = valorBase + taxaLoja.calculaTaxa();
 
