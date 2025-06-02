@@ -1,34 +1,40 @@
-package pagamento;
-
-public class ProcessarPagamento {
-
-	private Double valorJogo;
-	private TaxaLoja taxaLoja;
-	private TaxaPagamento taxaPagamento;
-	private Integer dias;
+	package pagamento;
+	import java.util.Scanner;
 	
-	public ProcessarPagamento(Double valorJogo, TaxaLoja taxaLoja, TaxaPagamento taxaPagamento, Integer dias) {		//MEXER NOS DIAS, TALVEZ COLOCAR DATA
-		this.valorJogo = valorJogo;
-		this.taxaLoja = taxaLoja;
-		this.taxaPagamento = taxaPagamento;
-		this.dias = dias;
+	public class ProcessarPagamento {
+
+		public ProcessarPagamento() {		
+			
+		}
+		
+
+		public TaxaLoja unidadeLoja() { 
+			
+			Scanner sc = new Scanner(System.in);
+			
+			TaxaLoja taxaSalvador = new TaxaSalvador();
+			TaxaLoja taxaBarra = new TaxaBarra();
+			
+			Integer escolha = 0;
+			
+			while(escolha != 1 && escolha != 2) {
+				System.out.println("Qual a unidade?");
+				System.out.println("1- Shopping Barra");
+				System.out.println("2- Shopping Salvador");
+				
+				escolha = sc.nextInt();
+				
+				if(escolha != 1 && escolha != 2) {
+					 System.out.println("Escolha inválida, tente novamente");
+				}
+			}
+			
+			if(escolha == 1) {
+				return taxaSalvador;
+			}else {
+				return taxaBarra;
+			}
+			
+			
+		}
 	}
-	
-	
-	public Double calculaValorFinal() {
-		
-		Double valor;
-		
-		valor = valorJogo*dias;
-		valor += taxaLoja.calculaTaxa();
-		valor += taxaPagamento.calculaTaxa(valor);
-		
-		return valor;
-		
-	}
-
-	
-	
-	
-	
-}
