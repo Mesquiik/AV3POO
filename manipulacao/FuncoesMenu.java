@@ -7,6 +7,7 @@ import pagamento.*;
 public class FuncoesMenu {
 
 	private static List<Jogos> listaJogos = new ArrayList<>();
+	private static List<Jogos> carrinho = new ArrayList<>();
 
 	public void cadastrarJogosIniciais() {
 		listaJogos.add(new JogoCarta("Uno", "001", 5.00, 112));
@@ -117,7 +118,7 @@ public class FuncoesMenu {
 			case 4 -> {
 				System.out.println("Código do jogo para alterar: ");
 				String codigo = scanner.nextLine();
-				System.out.println("Novo nome: ");
+				System.out.println("Novo preço: ");
 
 				double preco = scanner.nextDouble();
 				alterarPreco(codigo, preco);
@@ -130,7 +131,7 @@ public class FuncoesMenu {
 				String codigo = scanner.nextLine();
 				Integer tipo = 0;
 				while (tipo != 1 && tipo != 2 && tipo != 3) {
-					System.out.println("Tipo do jogo (1- Carta, 2- Tabuleiro, 3- Dado: ");
+					System.out.println("Tipo do jogo (1- Carta, 2- Tabuleiro, 3- Dado): ");
 					tipo = scanner.nextInt();
 					if (tipo != 1 && tipo != 2 && tipo != 3) {
 						System.out.println("Tipo incorreto, tente novamente.");
@@ -174,6 +175,18 @@ public class FuncoesMenu {
 		scanner.close();
 	}
 
+	public static void removerJogoCarrinho(String codigo) {
+		Iterator<Jogos> iterator = carrinho.iterator();
+		while (iterator.hasNext()) {
+			if (iterator.next().getCodigo().equalsIgnoreCase(codigo)) {
+				iterator.remove();
+				System.out.println("Jogo removido do carrinho com sucesso.");
+				return;
+			}
+		}
+		System.out.println("Jogo não encontrado pra remoção.");
+	}
+
 	public void alugarJogos(Scanner scanner) {
 		List<Jogos> carrinho = new ArrayList<>();
 		Double total = 0.0;
@@ -190,10 +203,27 @@ public class FuncoesMenu {
 				carrinho.add(jogo);
 				total += jogo.getPreco();
 				System.out.println("Jogo adicionado ao carrinho: " + jogo.getNome());
+
+				System.out.println("Carrinho até o momento: ");
+
+				for (Jogos jogoo : carrinho) {
+					System.out.println(jogoo);
+				}
+
 			} else {
 				System.out.println("Código inválido.");
 			}
 		}
+
+		System.out.println("O que gostaria de fazer?");
+		System.out.println("1 - Efetuar compra");
+		System.out.println("2 - Remover jogo");
+		System.out.println("3 - Cancelar compra");
+
+		int op = scanner.nextInt();
+		scanner.nextLine();
+
+		// ajustar o while
 
 		if (carrinho.isEmpty()) {
 			System.out.println("Nenhum jogo selecionado.");
@@ -217,7 +247,7 @@ public class FuncoesMenu {
 
 			Double valorCartao = valorTotalComTaxa + taxaCartao.calculaTaxa(valorTotalComTaxa);
 			Double valorPix = valorTotalComTaxa + descontoPix.calculaTaxa(valorTotalComTaxa);
-			
+
 			System.out.println("Valor base -> R$ " + String.format("%.2f", valorTotalComTaxa));
 			System.out.println("1 - Cartão -> R$ " + String.format("%.2f", valorCartao));
 			System.out.println("2 - Pix -> R$ " + String.format("%.2f", valorPix));
