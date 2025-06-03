@@ -215,15 +215,15 @@ public class FuncoesMenu {
 			}
 		}
 
-		System.out.println("O que gostaria de fazer?");
+		/*System.out.println("O que gostaria de fazer?");
 		System.out.println("1 - Efetuar compra");
-		System.out.println("2 - Remover jogo");
-		System.out.println("3 - Cancelar compra");
+		System.out.println("2 - Remover jogo"); -> ta dando tilt
+		System.out.println("3 - Cancelar compra"); -> ta dando tilt
 
 		int op = scanner.nextInt();
 		scanner.nextLine();
 
-		// ajustar o while
+		ajustar o while*/
 
 		if (carrinho.isEmpty()) {
 			System.out.println("Nenhum jogo selecionado.");
