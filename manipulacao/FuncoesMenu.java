@@ -242,10 +242,9 @@ public class FuncoesMenu {
 			case "confirmar" -> {
 				break;
 			}
-			 default -> System.out.println("Opção inválida.");
+			 default -> System.out.println("Escolha inválida.");
 			}
 			
-			if(opcao.equals("confirmar")) break;
 		}
 	
 			
