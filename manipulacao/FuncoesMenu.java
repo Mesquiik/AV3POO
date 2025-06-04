@@ -188,119 +188,89 @@ public class FuncoesMenu {
 	}
 
 	public void alugarJogos(Scanner scanner) {
-    List<Jogos> carrinho = new ArrayList<>();
-    Double total = 0.0;
-    boolean alugando = true;
+		List<Jogos> carrinho = new ArrayList<>();
+		Double total = 0.0;
 
-    while (alugando) {
-        System.out.println("\n=== Menu de Aluguel ===");
-        System.out.println("1 - Adicionar jogo ao carrinho");
-        System.out.println("2 - Remover jogo do carrinho");
-        System.out.println("3 - Visualizar carrinho");
-        System.out.println("4 - Finalizar aluguel");
-        System.out.println("5 - Cancelar operação");
-        System.out.print("Escolha uma opção: ");
-        int escolha = scanner.nextInt();
-        scanner.nextLine();
+		while (true) {
+			listarJogos();
+			System.out.println("Digite o código do jogo para adicionar ao carrinho (ou 'fim' para encerrar): ");
+			String codigo = scanner.nextLine();
+			if (codigo.equalsIgnoreCase("fim"))
+				break;
 
-        switch (escolha) {
-            case 1 -> {
-                listarJogos();
-                System.out.print("Digite o código do jogo para adicionar: ");
-                String codigo = scanner.nextLine();
-                Jogos jogo = buscarPorCodigo(codigo);
-                if (jogo != null) {
-                    carrinho.add(jogo);
-                    total += jogo.getPreco();
-                    System.out.println("Jogo adicionado: " + jogo.getNome());
-                }
-            }
-            case 2 -> {
-                if (carrinho.isEmpty()) {
-                    System.out.println("Carrinho está vazio.");
-                    break;
-                }
-                System.out.print("Digite o código do jogo a remover: ");
-                String codigoRemover = scanner.nextLine();
-                boolean removido = false;
-                Iterator<Jogos> iterator = carrinho.iterator();
-                while (iterator.hasNext()) {
-                    Jogos j = iterator.next();
-                    if (j.getCodigo().equalsIgnoreCase(codigoRemover)) {
-                        total -= j.getPreco();
-                        iterator.remove();
-                        System.out.println("Removido do carrinho: " + j.getNome());
-                        removido = true;
-                        break;
-                    }
-                }
-                if (!removido) {
-                    System.out.println("Jogo não encontrado no carrinho.");
-                }
-            }
-            case 3 -> {
-                if (carrinho.isEmpty()) {
-                    System.out.println("Carrinho vazio.");
-                } else {
-                    System.out.println("=== Carrinho ===");
-                    for (Jogos jogo : carrinho) {
-                        System.out.println(jogo);
-                    }
-                    System.out.println("Total parcial: R$ " + String.format("%.2f", total));
-                }
-            }
-            case 4 -> {
-                if (carrinho.isEmpty()) {
-                    System.out.println("Carrinho vazio. Não é possível finalizar.");
-                    break;
-                }
+			Jogos jogo = buscarPorCodigo(codigo);
+			if (jogo != null) {
+				carrinho.add(jogo);
+				total += jogo.getPreco();
+				System.out.println("Jogo adicionado ao carrinho: " + jogo.getNome());
 
-                System.out.print("Digite o número de dias do aluguel: ");
-                int dias = scanner.nextInt();
-                scanner.nextLine();
+				System.out.println("Carrinho até o momento: ");
 
-                ProcessarPagamento processar = new ProcessarPagamento();
-                TaxaLoja taxaLoja = processar.unidadeLoja();
+				for (Jogos jogoo : carrinho) {
+					System.out.println(jogoo);
+				}
 
-                Double valorBase = total * dias;
-                Double valorTotalComTaxa = valorBase + taxaLoja.calculaTaxa();
+			} else {
+				System.out.println("Código inválido.");
+			}
+		}
 
-                TaxaPagamento taxaCartao = new TaxaCartao();
-                TaxaPagamento descontoPix = new TaxaPix();
+		/*System.out.println("O que gostaria de fazer?");
+		System.out.println("1 - Efetuar compra");
+		System.out.println("2 - Remover jogo"); -> ta dando tilt
+		System.out.println("3 - Cancelar compra"); -> ta dando tilt
 
-                Double valorCartao = valorTotalComTaxa + taxaCartao.calculaTaxa(valorTotalComTaxa);
-                Double valorPix = valorTotalComTaxa + descontoPix.calculaTaxa(valorTotalComTaxa);
+		int op = scanner.nextInt();
+		scanner.nextLine();
 
-                System.out.println("Valor base (aluguel + taxa da loja): R$ " + String.format("%.2f", valorTotalComTaxa));
-                System.out.println("1 - Cartão -> R$ " + String.format("%.2f", valorCartao));
-                System.out.println("2 - Pix -> R$ " + String.format("%.2f", valorPix));
+		ajustar o while*/
 
-                int forma = 0;
-                Double valorPago = 0.0;
+		if (carrinho.isEmpty()) {
+			System.out.println("Nenhum jogo selecionado.");
+			return;
 
-                while (forma != 1 && forma != 2) {
-                    System.out.print("Escolha a forma de pagamento: ");
-                    forma = scanner.nextInt();
-                    scanner.nextLine();
+		} else {
 
-                    if (forma == 1) {
-                        valorPago = valorCartao;
-                    } else if (forma == 2) {
-                        valorPago = valorPix;
-                    } else {
-                        System.out.println("Escolha inválida.");
-                    }
-                }
+			System.out.println("Digite o número de dias que os jogos serão alugados");
+			int dias = scanner.nextInt();
 
-                System.out.println("\n Pagamento realizado!");
-                System.out.println("Total pago: R$ " + String.format("%.2f", valorPago));
-                alugando = false;
-            }
-            case 5 -> {
-                System.out.println("Operação de aluguel cancelada.");
-                alugando = false;
-            }
-            default -> System.out.println("Opção inválida.");
-        }
-    }
-}
+			scanner.nextLine();
+
+			ProcessarPagamento processar = new ProcessarPagamento();
+			TaxaLoja taxaLoja = processar.unidadeLoja();
+
+			Double valorBase = total * dias;
+			Double valorTotalComTaxa = valorBase + taxaLoja.calculaTaxa();
+
+			TaxaPagamento taxaCartao = new TaxaCartao();
+			TaxaPagamento descontoPix = new TaxaPix();
+
+			Double valorCartao = valorTotalComTaxa + taxaCartao.calculaTaxa(valorTotalComTaxa);
+			Double valorPix = valorTotalComTaxa + descontoPix.calculaTaxa(valorTotalComTaxa);
+
+			System.out.println("Valor base -> R$ " + String.format("%.2f", valorTotalComTaxa));
+			System.out.println("1 - Cartão -> R$ " + String.format("%.2f", valorCartao));
+			System.out.println("2 - Pix -> R$ " + String.format("%.2f", valorPix));
+
+			int forma = 0;
+			Double valorPago = 0.0;
+
+			while (forma != 1 && forma != 2) {
+
+				System.out.println("Escolha a forma de pagamento: ");
+				forma = scanner.nextInt();
+				scanner.nextLine();
+
+				if (forma == 1) {
+					valorPago = valorCartao;
+				} else if (forma == 2) {
+					valorPago = valorPix;
+				} else {
+					System.out.println("Escolha inválida.");
+				}
+			}
+
+			System.out.println("\n Pagamento realizado com sucesso!");
+			System.out.println("Total pago: R$ " + String.format("%.2f", valorPago));
+		}
+	}
