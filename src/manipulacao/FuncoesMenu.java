@@ -1,4 +1,4 @@
-package manipulacao;
+package manipulacao; // omaigodi tedas
 
 import jogos.*;
 import java.util.*;
