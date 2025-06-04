@@ -186,9 +186,11 @@ public class FuncoesMenu {
 		}
 		System.out.println("Jogo não encontrado pra remoção.");
 	}
+	
 
 	public void alugarJogos(Scanner scanner) {
-		List<Jogos> carrinho = new ArrayList<>();
+		carrinho.clear(); 
+		
 		Double total = 0.0;
 
 		while (true) {
@@ -199,41 +201,56 @@ public class FuncoesMenu {
 				break;
 
 			Jogos jogo = buscarPorCodigo(codigo);
-			if (jogo != null) {
+			if (jogo!= null) { 
 				carrinho.add(jogo);
 				total += jogo.getPreco();
 				System.out.println("Jogo adicionado ao carrinho: " + jogo.getNome());
-
-				System.out.println("Carrinho até o momento: ");
-
-				for (Jogos jogoo : carrinho) {
-					System.out.println(jogoo);
-				}
-
-			} else {
-				System.out.println("Código inválido.");
+				
 			}
 		}
-
-		/*System.out.println("O que gostaria de fazer?");
-		System.out.println("1 - Efetuar compra");
-		System.out.println("2 - Remover jogo"); -> ta dando tilt
-		System.out.println("3 - Cancelar compra"); -> ta dando tilt
-
-		int op = scanner.nextInt();
-		scanner.nextLine();
-
-		ajustar o while*/
 
 		if (carrinho.isEmpty()) {
 			System.out.println("Nenhum jogo selecionado.");
 			return;
 
-		} else {
-
+		}
+		
+		while (true) { 
+			System.out.println("\n=== CARRINHO ATUAL ===");
+			for (Jogos j : carrinho) {
+				System.out.println(j);
+			}
+			
+			System.out.println("\nDigite uma opção: ");
+			System.out.println("'remover' para remover um jogo do carrinho");
+			System.out.println("'cancelar' para cancelar a compra");
+			System.out.println("'confirmar' para seguir para pagamento");
+			System.out.print("Opção: ");
+			String opcao = scanner.nextLine().toLowerCase();
+			
+			switch (opcao) { 
+			case "remover" -> {
+				System.out.print("Digite o código do jogo que deseja remover: ");
+				String codigoRemover = scanner.nextLine();
+				removerJogoCarrinho(codigoRemover);
+			}
+			case "cancelar" -> {
+				carrinho.clear();
+				System.out.println("Compra cancelada.");
+				return;
+			}
+			case "confirmar" -> {
+				break;
+			}
+			 default -> System.out.println("Opção inválida.");
+			}
+			
+			if(opcao.equals("confirmar")) break;
+		}
+	
+			
 			System.out.println("Digite o número de dias que os jogos serão alugados");
 			int dias = scanner.nextInt();
-
 			scanner.nextLine();
 
 			ProcessarPagamento processar = new ProcessarPagamento();
@@ -274,3 +291,4 @@ public class FuncoesMenu {
 			System.out.println("Total pago: R$ " + String.format("%.2f", valorPago));
 		}
 	}
+
