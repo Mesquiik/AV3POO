@@ -1,4 +1,4 @@
-package manipulacao; // omaigodi tedas
+package manipulacao; 
 
 import jogos.*;
 import java.util.*;
@@ -293,4 +293,3 @@ public class FuncoesMenu {
 	}
 
 
-// teste mel 
