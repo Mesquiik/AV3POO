@@ -215,7 +215,8 @@ public class FuncoesMenu {
 
 		}
 		
-		while (true) { 
+		boolean x = true;
+		while (x) { 
 			System.out.println("\n=== CARRINHO ATUAL ===");
 			for (Jogos j : carrinho) {
 				System.out.println(j);
@@ -240,7 +241,7 @@ public class FuncoesMenu {
 				return;
 			}
 			case "confirmar" -> {
-				break;
+				x = false;
 			}
 			 default -> System.out.println("Escolha inválida.");
 			}
@@ -290,4 +291,3 @@ public class FuncoesMenu {
 			System.out.println("Total pago: R$ " + String.format("%.2f", valorPago));
 		}
 	}
-
