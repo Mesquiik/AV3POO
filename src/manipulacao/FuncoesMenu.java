@@ -287,8 +287,10 @@ public class FuncoesMenu {
 				}
 			}
 
-			System.out.println("\n Pagamento realizado com sucesso!");
+			System.out.println("\n Pagamento realizado com sucesso!"); 
 			System.out.println("Total pago: R$ " + String.format("%.2f", valorPago));
 		}
 	}
 
+
+// teste mel 
