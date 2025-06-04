@@ -215,7 +215,8 @@ public class FuncoesMenu {
 
 		}
 		
-		while (true) { 
+		boolean x = true;
+		while (x) { 
 			System.out.println("\n=== CARRINHO ATUAL ===");
 			for (Jogos j : carrinho) {
 				System.out.println(j);
@@ -240,12 +241,13 @@ public class FuncoesMenu {
 				return;
 			}
 			case "confirmar" -> {
-				break;
+				x = false;
 			}
 			 default -> System.out.println("Escolha inválida.");
 			}
 			
 		}
+	
 			
 			System.out.println("Digite o número de dias que os jogos serão alugados");
 			int dias = scanner.nextInt();
