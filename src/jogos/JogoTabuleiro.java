@@ -9,6 +9,7 @@ public class JogoTabuleiro extends Jogos {
 		this.numeroPecas = numeroPecas;
 	}
 
+	//adiciona atributo especifico no tostring
 	@Override
 	public String toString() {
 		return super.toString() + " Número de peças: " + numeroPecas;
