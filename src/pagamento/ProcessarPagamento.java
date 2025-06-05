@@ -8,6 +8,7 @@ public class ProcessarPagamento {
 
 	}
 
+	//funcao para perguntar qual a unidade
 	public TaxaLoja unidadeLoja() {
 
 		Scanner sc = new Scanner(System.in);
