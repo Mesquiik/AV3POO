@@ -9,6 +9,8 @@ public class JogoCarta extends Jogos {
 		this.numeroCartas = numeroCartas;
 	}
 
+
+	//adiciona atributo especifico no tostring
 	@Override
 	public String toString() {
 		return super.toString() + " Número de cartas: " + numeroCartas;
