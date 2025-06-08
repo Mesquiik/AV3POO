@@ -29,9 +29,6 @@ public abstract class Jogos {
 		this.codigo = codigo;
 	}
 
-	public String getCategoria() {
-		return categoria;
-	}
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
