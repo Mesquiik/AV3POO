@@ -2,7 +2,7 @@ package main;
 
 import manipulacao.*;
 
-public class App {
+public class Programa {
 	public static void main(String[] args) {
 
 		FuncoesMenu menu = new FuncoesMenu();
