@@ -26,6 +26,7 @@ public class FuncoesMenu {
 
 	// Lista todos os jogos cadastrados
 	public static void listarJogos() {
+		System.out.println();
 		System.out.println("=== Lista de Jogos ===");
 		for (Jogos jogo : listaJogos) {
 			System.out.println(jogo);
@@ -106,7 +107,9 @@ public class FuncoesMenu {
 
 		do {
 			// Exibe o menu
-			System.out.println("\n===== MENU =====");
+			System.out.println();
+			System.out.println();
+			System.out.println("\n=========== MENU ===========");
 			System.out.println("1 - Listar jogos");
 			System.out.println("2 - Buscar jogo por código");
 			System.out.println("3 - Listar jogos ordenados por nome");
@@ -122,11 +125,13 @@ public class FuncoesMenu {
 			switch (opcao) {
 				case 1 -> listarJogos();
 				case 2 -> {
+					System.out.println();
 					System.out.println("Digite o código do jogo: ");
 					buscarPorCodigo(scanner.nextLine());
 				}
 				case 3 -> listarOrdenadoPorNome();
 				case 4 -> {
+					System.out.println();
 					System.out.println("Código do jogo para alterar: ");
 					String codigo = scanner.nextLine();
 					System.out.println("Novo preço: ");
@@ -135,6 +140,7 @@ public class FuncoesMenu {
 				}
 				case 5 -> {
 					// Adiciona um novo jogo com dados informados pelo usuário
+					System.out.println();
 					System.out.println("Nome do novo jogo: ");
 					String nome = scanner.nextLine();
 					System.out.println("Código do jogo a adicionar: ");
@@ -166,10 +172,12 @@ public class FuncoesMenu {
 					adicionarJogo(jogo);
 				}
 				case 6 -> {
+					System.out.println();
 					System.out.println("Código do jogo para remover: ");
 					removerJogo(scanner.nextLine());
 				}
 				case 7 -> alugarJogos(scanner); // Função para alugar jogos
+				
 				case 8 -> System.out.println("Saindo."); // Encerra o loop
 				default -> System.out.println("Opção inválida.");
 			}
@@ -185,6 +193,7 @@ public class FuncoesMenu {
 		while (iterator.hasNext()) {
 			if (iterator.next().getCodigo().equalsIgnoreCase(codigo)) {
 				iterator.remove();
+				System.out.println();
 				System.out.println("Jogo removido do carrinho com sucesso.");
 				return;
 			}
@@ -200,6 +209,7 @@ public class FuncoesMenu {
 		// Adiciona jogos ao carrinho
 		while (true) {
 			listarJogos();
+			System.out.println();
 			System.out.println("Digite o código do jogo para adicionar ao carrinho (ou 'fim' para encerrar): ");
 			String codigo = scanner.nextLine();
 			if (codigo.equalsIgnoreCase("fim"))
@@ -221,11 +231,13 @@ public class FuncoesMenu {
 		boolean x = true;
 		while (x) {
 			// Mostra os jogos no carrinho e opções ao usuário
+			System.out.println();
 			System.out.println("\n=== CARRINHO ATUAL ===");
 			for (Jogos j : carrinho) {
 				System.out.println(j);
 			}
-
+			
+			System.out.println();
 			System.out.println("\nDigite uma opção: ");
 			System.out.println("'remover' para remover um jogo do carrinho");
 			System.out.println("'cancelar' para cancelar a compra");
@@ -235,12 +247,14 @@ public class FuncoesMenu {
 
 			switch (opcao) {
 				case "remover" -> {
+					System.out.println();
 					System.out.print("Digite o código do jogo que deseja remover: ");
 					String codigoRemover = scanner.nextLine();
 					removerJogoCarrinho(codigoRemover);
 				}
 				case "cancelar" -> {
 					carrinho.clear();
+					System.out.println();
 					System.out.println("Compra cancelada.");
 					return;
 				}
@@ -250,6 +264,7 @@ public class FuncoesMenu {
 		}
 
 		// Processa o pagamento
+		System.out.println();
 		System.out.println("Digite o número de dias que os jogos serão alugados");
 		int dias = scanner.nextInt();
 		scanner.nextLine();
@@ -275,6 +290,7 @@ public class FuncoesMenu {
 
 		// Escolhe a forma de pagamento
 		while (forma != 1 && forma != 2) {
+			System.out.println();
 			System.out.println("Escolha a forma de pagamento: ");
 			forma = scanner.nextInt();
 			scanner.nextLine();
@@ -289,6 +305,7 @@ public class FuncoesMenu {
 		}
 
 		// Finaliza o processo
+		System.out.println();
 		System.out.println("\nPagamento realizado com sucesso!");
 		System.out.println("Total pago: R$ " + String.format("%.2f", valorPago));
 	}
